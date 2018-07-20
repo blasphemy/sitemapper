@@ -44,3 +44,7 @@ Output for above example:
 </urlset>
 
 ```
+
+## Other sitemap stuff
+
+As you can tell, this literally does the bare minimum, setting the `<loc>` of a URL and that's it. That's all I need for my implementation, but if there is interest I will add other attributes, like priority, and last updated.
