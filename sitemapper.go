@@ -14,7 +14,8 @@ type url struct {
 	Location string
 }
 
-type mapper struct {
+//Mapper is the main representation of the sitemapper
+type Mapper struct {
 	URLs []url
 }
 
@@ -35,22 +36,23 @@ type xmlURLSet struct {
 }
 
 //NewMapper returns a new "Mapper" instance used to generate your sitemap
-func NewMapper() *mapper {
-	m := &mapper{
+func NewMapper() *Mapper {
+	m := &Mapper{
 		URLs: []url{},
 	}
 	return m
 }
 
-//AddUrl adds a new url to the mapper
-func (m *mapper) AddUrl(u string) {
+//AddURL adds a new url to the mapper
+func (m *Mapper) AddURL(u string) {
 	nu := url{
 		Location: u,
 	}
 	m.URLs = append(m.URLs, nu)
 }
 
-func (m *mapper) GenerateXML() ([]byte, error) {
+//GenerateXML returns the generated sitemap xml, and an error if applicable
+func (m *Mapper) GenerateXML() ([]byte, error) {
 	urls := []xmlURL{}
 	for _, x := range m.URLs {
 		xu := urlToXMLUrl(x)
